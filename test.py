@@ -42,15 +42,15 @@ for synset in list(wn.all_synsets('n')):
         if noun.isalpha() and syllable_count(noun) == 1 and noun not in nouns:
             bisect.insort(nouns, noun)
             
-with open('nouns.txt', 'w') as f:
-    for noun in nouns:
-        f.write(f"{noun}\n")
+#with open('nouns.txt', 'w') as f:
+#    for noun in nouns:
+#        f.write(f"{noun}\n")
 
 verbs = []
 for synset in list(wn.all_synsets('v')):
     for lemma in synset.lemmas():      
         verb = lemma.name().lower()
-        if verb.isalpha() and len(verb) < 10 and verb not in verbs:
+        if verb.isalpha() and syllable_count(verb) == 1 and verb not in verbs:
             bisect.insort(verbs, verb)
             
 with open('verbs.txt', 'w') as f:
